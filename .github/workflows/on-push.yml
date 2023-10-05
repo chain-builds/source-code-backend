@@ -14,8 +14,7 @@ jobs:
             github.repos.createDispatchEvent({
               owner: 'chain-builds',
               repo: 'builds',
-              workflow_id: 'build.yml',
-              event_type: 'workflow_dispatch', 
+              event_type: 'dependency_updated', 
               client_payload: { 
                 message: 'Hello from another repository'
               }
