@@ -1,0 +1,22 @@
+name: Trigger workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow dispatch
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.PAT }} # This token must have repo scope
+          script: |
+            github.repos.createDispatchEvent({
+              owner: 'chain-builds',
+              repo: 'builds',
+              workflow_id: 'build.yml',
+              event_type: 'workflow_dispatch', 
+              client_payload: { 
+                message: 'Hello from another repository'
+              }
+            })
