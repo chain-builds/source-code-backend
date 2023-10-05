@@ -12,4 +12,4 @@ jobs:
             token: ${{ secrets.PAT }}
             repository: chain-builds/builds
             event-type: dependency_updated
-            payload: '{"message": "Hello from another repository"}'        
+            payload: '{"triggered_by": "backend"}'
