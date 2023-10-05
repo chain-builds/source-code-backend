@@ -6,8 +6,8 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger workflow dispatch
-        uses: peter-evans/workflow-dispatch@v1
+      - name: Trigger repository dispatch
+        uses: peter-evans/repository-dispatch@v2
         with:
             token: ${{ secrets.PAT }}
             repository: chain-builds/builds
