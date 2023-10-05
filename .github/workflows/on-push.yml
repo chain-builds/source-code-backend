@@ -7,15 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger workflow dispatch
-        uses: actions/github-script@v4
+        uses: peter-evans/workflow-dispatch@v1
         with:
-          github-token: ${{ secrets.PAT }} # This token must have repo scope
-          script: |
-            github.repos.createDispatchEvent({
-              owner: 'chain-builds',
-              repo: 'builds',
-              event_type: 'dependency_updated', 
-              client_payload: { 
-                message: 'Hello from another repository'
-              }
-            })
+            token: ${{ secrets.PAT }}
+            repository: chain-builds/builds
+            event-type: dependency_updated
+            payload: '{"message": "Hello from another repository"}'        
